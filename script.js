@@ -1,32 +1,49 @@
 'use strict';
 
-const oneWord = function (str) {
-  return str.replace(/ /g, '').toLowerCase();
+const greet = function (greeting) {
+  return function (name) {
+    console.log(`${greeting} ${name}`);
+  };
 };
 
-const upperFirstWord = function (str) {
-  const [first, ...others] = str.split(' ');
-  return [first.toUpperCase(), ...others].join(' ');
-};
+const greeterHey = greet('Hey');
+greeterHey('Jonas');
+greeterHey('Steven');
 
-// Higher order function
-const transformer = function (str, fn) {
-  console.log(`Original string: ${str}`);
-  console.log(`Transformed string: ${fn(str)}`);
+greet('Hello')('Jonas');
 
-  console.log(`Transformed by: ${fn.name}`);
-};
+// Challenge
+const greetArr = greeting => name => console.log(`${greeting} ${name}`);
+greetArr('Hi')('Jonas');
 
-transformer('JavaScript is the best!', upperFirstWord);
-transformer('JavaScript is the best!', oneWord);
+// const oneWord = function (str) {
+//   return str.replace(/ /g, '').toLowerCase();
+// };
 
-const high5 = function () {
-  console.log(':)');
-};
+// const upperFirstWord = function (str) {
+//   const [first, ...others] = str.split(' ');
+//   return [first.toUpperCase(), ...others].join(' ');
+// };
 
-document.body.addEventListener('click', high5);
+// // Higher order function
+// const transformer = function (str, fn) {
+//   console.log(`Original string: ${str}`);
+//   console.log(`Transformed string: ${fn(str)}`);
 
-['Jonas', 'Martha', 'Adam'].forEach(high5);
+//   console.log(`Transformed by: ${fn.name}`);
+// };
+
+// transformer('JavaScript is the best!', upperFirstWord);
+// transformer('JavaScript is the best!', oneWord);
+
+// // JS uses callbacks all the time
+// const high5 = function () {
+//   console.log(':)');
+// };
+
+// document.body.addEventListener('click', high5);
+
+// ['Jonas', 'Martha', 'Adam'].forEach(high5);
 
 // const flight = 'LH1234';
 // const jonas = {
